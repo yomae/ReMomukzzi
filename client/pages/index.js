@@ -69,6 +69,7 @@ const Home = () => {
                   return temp;
                 })
                 .then((res) => {
+                  console.log(res)
                   if (res.length === 45) {
                     axios
                       .post(
@@ -122,18 +123,20 @@ const Home = () => {
           <Header />
           <Button onClick={handleReset}>다른메뉴추천받기</Button>
           <Row>
-            <Col cs={24} md={12}>
-              <ImageCarousel imageInfo={shopInfo} randomInt={randomInt} />
+            <Col cs={24} md={16}>
+              <ImageCarousel imageInfo={shopInfo[randomInt]} />
               <Row>
                 <Col cs={24} md={12}>
-                  <ShopInfo shopInfo={shopInfo} randomInt={randomInt} />
+                  <ShopInfo shopInfo={shopInfo[randomInt]} />
                 </Col>
                 <Col cs={24} md={12}>
-                  <KaKaoMap Info={shopInfo} randomInt={randomInt} />
+                  <div>
+                    <KaKaoMap Info={shopInfo[randomInt]} />
+                  </div>
                 </Col>
               </Row>
             </Col>
-            <Col cs={24} md={12}>
+            <Col cs={24} md={8}>
               <IntroImageSet imageInfo={shuffleArr} />
             </Col>
           </Row>
