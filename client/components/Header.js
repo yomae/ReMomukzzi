@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Menu } from "antd";
 import Cookies from "js-cookie";
 import styled from "styled-components";
 import { useCallback, useState, useEffect } from "react";
@@ -17,35 +16,41 @@ const HeaderContainer = styled.div`
     align-items: center;
     background-color: #f1c83e;
     padding: 9px 12px;
-    min-width: 564px;
+    min-width: 680px;
 
-    @media (max-width: 804px) {
+    @media (max-width: 960px) {
       .navlist {
         margin: 15px 20px;
       }
     }
 
-    @media (max-width: 725px) {
+    @media (max-width: 881px) {
       .navlist {
         margin: 15px 15px;
       }
     }
 
-    @media (max-width: 684px) {
+    @media (max-width: 840px) {
       .navlist {
         margin: 15px 10px;
       }
     }
 
-    @media (max-width: 642px) {
+    @media (max-width: 800px) {
       .navlist {
         margin: 15px 5px;
       }
     }
 
-    @media (max-width: 602px) {
+    @media (max-width: 761px) {
       .navlist {
         margin: 15px 0px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .navbar_menu {
+        padding-left: 0px;
       }
     }
   }
@@ -117,6 +122,7 @@ const HeaderContainer = styled.div`
 const Header = () => {
   const router = useRouter();
   const dispatch = useDispatch();
+  const [nick, setNick] = useState(Cookies.get("nickname"));
 
   const handleLogOut = useCallback(() => {
     if (window.confirm("로그아웃 하시겠습니까?")) {
@@ -138,18 +144,25 @@ const Header = () => {
     }
   });
 
+  useEffect(() => {
+    setNick(Cookies.get("nickname"));
+  }, [nick]);
+
   return (
     <HeaderContainer>
       <nav className="navbar">
         <div className="navbar_logo">
           <Link href="/">
-            <a>로고 들어갈 부분</a>
+            <img
+              src="https://cdn.discordapp.com/attachments/968002114511073283/977107063681478716/b8f3403718a83d04.png"
+              style={{ width: 250, height: 100, objectFit: "cover" }}
+            />
           </Link>
         </div>
         {Cookies.get("accessToken") ? (
           <ul className="navbar_menu">
             <li className="navlist">
-              <div>{Cookies.get("nickname")}님</div>
+              <div>{nick}님</div>
             </li>
             <li className="navlist">
               <Link href="/mypage" className="navbar_link">
