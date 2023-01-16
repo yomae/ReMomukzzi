@@ -118,7 +118,7 @@ const Home = () => {
                     console.log(res.length);
                     axios
                       .post(
-                        "https://noqz6gs8ia.execute-api.ap-northeast-2.amazonaws.com/data",
+                        `${NEXT_PUBLIC_SERVER_URL}/data`,
                         { data: res },
                         {
                           withCredentials: true,
