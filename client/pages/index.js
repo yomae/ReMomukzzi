@@ -118,7 +118,7 @@ const Home = () => {
                     console.log(res.length);
                     axios
                       .post(
-                        `${NEXT_PUBLIC_SERVER_URL}/data`,
+                        `${process.env.NEXT_PUBLIC_SERVER_URL}/data`,
                         { data: res },
                         {
                           withCredentials: true,
