@@ -68,11 +68,15 @@ const Home = () => {
 
   function getShuffledArray(arr, n) {
     let newArr = [...arr];
+    console.log(n);
+    console.log(arr);
     newArr.splice(n, 1);
+    console.log(newArr);
     for (let i = newArr.length - 1; i > 0; i--) {
       const rand = Math.floor(Math.random() * (i + 1));
       [newArr[i], newArr[rand]] = [newArr[rand], newArr[i]];
     }
+    console.log(newArr);
     return newArr;
   }
 
@@ -97,7 +101,7 @@ const Home = () => {
             for (let i = 1; i < 4; i++) {
               axios
                 .get(
-                  `https://dapi.kakao.com/v2/local/search/category.json?category_group_code=FD6&page=${i}&size=15&sort=accuracy&x=${position.coords.longitude}&y=${position.coords.latitude}&radius=500`,
+                  `https://dapi.kakao.com/v2/local/search/category.json?category_group_code=FD6&page=${i}&size=15&sort=accuracy&x=${position.coords.longitude}&y=${position.coords.latitude}&radius=1000`,
                   {
                     headers: {
                       Authorization: process.env.NEXT_PUBLIC_AUTHORIZATION_KEY,
