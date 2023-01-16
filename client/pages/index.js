@@ -118,7 +118,7 @@ const Home = () => {
                     console.log(res.length);
                     axios
                       .post(
-                        `${process.env.NEXT_PUBLIC_SERVER_URL}/data`,
+                        "http://ec2-54-180-143-191.ap-northeast-2.compute.amazonaws.com:8080/data",
                         { data: res },
                         {
                           withCredentials: true,
