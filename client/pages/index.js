@@ -118,7 +118,7 @@ const Home = () => {
                     console.log(res.length);
                     axios
                       .post(
-                        "http://ec2-54-180-143-191.ap-northeast-2.compute.amazonaws.com:8080/data",
+                        "https://noqz6gs8ia.execute-api.ap-northeast-2.amazonaws.com/data",
                         { data: res },
                         {
                           withCredentials: true,
